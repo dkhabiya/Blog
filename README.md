@@ -13,10 +13,3 @@ A RESTful API is an application program interface (API) that uses HTTP requests 
 | EDIT      | /blogs/:id/edit   | Get the edit form for a particular blog entry |
 | UPDATE    | /blogs/:id        | Update a particular blog entry                |
 | DESTROY   | /blogs/:id        | Delete a particular blog entry                |
-
-
-## A few images from the app are shown below.
-
-### Home Page
-
-![alt text](blob/master/demo/allBlogs.JPG "Home")
