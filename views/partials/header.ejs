@@ -11,9 +11,25 @@
 		<div class="ui fixed inverted pointing menu">
 			<div class="ui container">
 				<div class="header item">
-					<i class="bathtub icon"></i>&nbsp Blog
+					<i class="food icon"></i>&nbsp <a href="/">Gastronome</a>
 				</div>
-				<a href="/" class="item">Home</a>
-				<a href="/blogs/new" class="item">New Post</a>
+				
+				<a href="/blogs/all" class="item">Posts</a>
+				
+				<% if(currentUser) { %>
+					<a href="/blogs/" class="item">My Posts</a>
+					<a href="/blogs/new" class="item">New Post</a>
+				<% } %>
+				
+				<div class="right menu">
+					<% if(currentUser) { %>
+						<a href="/user/<%= currentUser._id %>/edit" class="item"><i class="settings icon"></i>&nbsp Hello <%= currentUser.firstName %></a>
+						<a href="/user/logout" class="item">Logout</a>
+					<% } else { %>
+						<a href="/user/login" class="item">Login</a>
+					<% } %>
+					<a href="" class="item disabled"></a>
+				</div>
 			</div>
 		</div>
+		

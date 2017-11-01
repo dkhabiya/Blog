@@ -9,3 +9,8 @@ i.icon {
 #delete {
     display: inline;   
 }
+
+.divider-column {
+  position: relative;
+  padding: 0 !important;
+}

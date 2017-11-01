@@ -1,119 +1,61 @@
-var express     = require("express"),
-    bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose"),
-    methodOverride = require("method-override"),
-    sanitizer = require("express-sanitizer");
+var express         = require("express"),
+    app             = express(),
+    bodyParser      = require("body-parser"),
+    mongoose        = require("mongoose"),
+    methodOverride  = require("method-override"),
+    passport        = require("passport"),
+    localStratergy  = require("passport-local"),
+    passportConf    = require('./config/passport'),
+    flash           = require("connect-flash"),
+    sanitizer       = require("express-sanitizer");
     
-var app = express();
+// Including routes
+var blogRoutes      = require("./routes/blog"),
+    commentRoutes   = require("./routes/comment"),
+    userRoutes      = require("./routes/user");
+
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost/gastronome");
 
 app.set("view engine", "ejs");
-app.use(express.static("public"));
+app.set('trust proxy');
+
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(sanitizer());
+app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
-mongoose.connect("mongodb://localhost/BlogDB", {useMongoClient:true});
+// Passport config
+app.use(require("express-session")({
+    secret:"Chand pe le gaye!",
+    resave: false,
+    saveUninitialized: false
+}));
 
-var blogSchema = new mongoose.Schema({
-   title: String,
-   image: String,
-   body: String,
-   created: {type: Date, default: Date.now()}
-   
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
+    res.locals.info = req.flash("info");
+    next();
 });
 
-var Blog = mongoose.model("Blog", blogSchema);
+app.use(flash());
+app.use(sanitizer());
 
-// Blog.create({
-//     title: "Welcome!",
-//     image: "https://images.unsplash.com/photo-1489945052260-4f21c52268b9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=13d43906e3e3a60c9c7099f4e30b8d09",
-//     body: "Welcome to my blog!"
-// });
+// Use route files
+app.use("/blogs", blogRoutes);
+app.use("/blogs/:id/comments", commentRoutes);
+app.use("/user", userRoutes);
 
+// Default route.
 app.get("/", function(req, res) {
-    res.redirect("/blogs");
-})
-
-// INDEX Route
-app.get("/blogs", function(req, res){
-    Blog.find({}, function(err, blogs){
-        if(err) {
-            console.log("Error");
-        } else {
-            res.render("index", {blogs: blogs});
-        }
-    });
-});
-
-// New
-app.get("/blogs/new", function(req, res) {
-    res.render("new");
-});
-
-// Create
-app.post("/blogs", function(req, res){
-    // Sanitizing body for js
-    req.body.blog.body = req.sanitize(req.body.blog.body);
-    
-    Blog.create(req.body.blog, function(err, newB){
-        if(err) {
-            res.render("new");
-        } else {
-            res.redirect("/blogs");
-        }
-    });
-});
-
-// Show
-app.get("/blogs/:id", function(req, res) {
-   
-   Blog.find({_id: req.params.id}, function(err, blog){
-      if(err) {
-          console.log("Error");
-          res.redirect("/blogs");
-      } else {
-          res.render("show", {b: blog[0]});
-      }
-   });
-});
-
-// Edit
-app.get("/blogs/:id/edit", function(req, res) {
-   
-   Blog.find({_id: req.params.id}, function(err, blog) {
-       if(err) {
-           res.redirect("/blogs");
-       } else {
-           res.render("edit", {b: blog[0]});
-       }
-   }); 
-});
-
-// Update
-app.put("/blogs/:id", function(req, res){
-    // Sanitizing body for js
-    req.body.blog.body = req.sanitize(req.body.blog.body);
-    
-    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, uBlog){
-        if(err) {
-            console.log("Error");
-        } else {
-            res.redirect("/blogs/"+req.params.id);
-        }
-    });
-});
-
-// Destroy
-app.delete("/blogs/:id", function(req, res){
-    Blog.findByIdAndRemove(req.params.id, function(err){
-        if(err) {
-            console.log("Error");
-        } else {
-            res.redirect("/blogs");
-        }
-    });
+    // res.redirect("/blogs");
+    res.render("default");
 });
 
 app.listen(process.env.PORT, process.env.IP, function() {
-    console.log("Server started.");
+    console.log("Gastronome Server Started.");
 });

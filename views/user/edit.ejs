@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+    
+    <div class="ui main text container segment">
+    <h2 class="ui header">Account Details</h2>
+    <div class="ui hidden divider"></div>
+    <form class="ui form" action="/user/<%= currentUser._id %>" method="post">
+      <div class="two fields">
+        <div class="required field">
+          <label>First Name</label>
+          <input placeholder="First Name" name="user[firstName]" type="text" value="<%= currentUser.firstName %>" required>
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input placeholder="Last Name" name="user[lastName]" type="text" value="<%= currentUser.lastName %>" >
+        </div>
+      </div>
+      <div class="field disabled">
+        <label>E-mail</label>
+        <input placeholder="E-mail" name="user[email]" type="email" value="<%= currentUser.email %>" >
+      </div>
+      <div class="two fields">
+        <div class="disabled field">
+          <label>Username</label>
+          <input placeholder="Username" name="user[username]" type="text" value="<%= currentUser.username %>">
+        </div>
+        <div class="required field">
+          <label>Password</label>
+          <input placeholder="Password" name="user[password]" type="password" required>
+        </div>
+      </div>
+      <div class="ui hidden divider"></div>
+      <button class="ui black button">Save</button>
+      <a href="/blogs" class="ui button">Cancel</a>
+      <div class="ui hidden divider"></div>
+    </form>
+  </div>
+    
+<% include ../partials/footer %>

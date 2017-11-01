@@ -1,0 +1,55 @@
+<% include ../partials/header %>
+
+    <div class="ui main text container segment">
+        <div class="ui huge header"><%= blog.title %></div>
+        <div class="ui top attached">
+            <div class="item">
+                <img src="<%= blog.image %>" class="ui centered rounded large bordered image">
+                <br/>
+                <div class="content">
+                    <span><%= blog.created.toDateString() %></span>
+                </div>
+                <br/>
+                <div class="description">
+                    <p><%- blog.body %></p>
+                </div>
+                <br/>
+                <% if(currentUser && blog.author.id.equals(currentUser._id)) { %>
+                    <a class="ui blue basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+                    <form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="post">
+                        <button class="ui red basic button">Delete</button>
+                    </form>
+                <% } %>
+                
+                <div class="ui hidden divider"></div>
+                <div class="ui divider"></div>
+                
+                <div class="ui medium header">Comments</div>
+                <div class="ui comments">
+                    <% blog.comments.forEach(function(comment){ %>
+                        <div class="comment">
+                            <div class="content">
+                                <strong><a class="ui small header author"><%= comment.author.username %></a></strong>
+                                <div class="metadata">
+                                    <span class="date"><%= comment.created.toDateString() %></span>
+                                </div>
+                                <div class="text">
+                                    <%= comment.text %>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui section divider"></div>
+                    <% }) %>
+                    
+                    <form class="ui reply form" action="/blogs/<%= blog._id %>/comments" method="POST">
+                      <div class="field">
+                        <textarea name="comment[text]" placeholder="Your thoughts..."></textarea>
+                      </div>
+                      <button class="ui grey basic button">Add Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<% include ../partials/footer %>

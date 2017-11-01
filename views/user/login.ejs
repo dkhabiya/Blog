@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+  <div class="ui main text container segment">
+    <div class="ui two column middle aligned very relaxed stackable grid">
+      <div class="column">
+        <h2 class="ui header">Login</h2>
+        <form class="ui form" action="/user/login" method="POST">
+          <div class="required field">
+            <label>Username</label>
+            <input placeholder="Username" name="username" type="text" minlength="3" maxlength="15" required>
+          </div>
+          <div class="required field">
+            <label>Password</label>
+            <input placeholder="Password" type="password" name="password" required>
+          </div>
+          <div class="ui hidden divider"></div>
+          <button class="ui black button">Login</button>
+          <div class="ui hidden divider"></div>
+          <div class="ui error message"></div>
+        </form>
+      </div>
+      <div class="divider-column">
+        <div class="ui vertical divider">
+          Or
+        </div>
+      </div>
+      <div class="center aligned column">
+        <a class="ui green labeled icon large button" href="/user/signUp">
+            <i class="signup large icon"></i>Sign Up
+        </a>    
+      </div>
+    </div>
+  </div>
+  
+<% include ../partials/footer %>

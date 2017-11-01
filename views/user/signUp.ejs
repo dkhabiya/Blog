@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+  
+  <div class="ui main text container segment">
+    <h2 class="ui header">Sign Up</h2>
+    <div class="ui hidden divider"></div>
+    <form class="ui form" action="/user/signUp" method="post">
+      <div class="two fields">
+        <div class="required field">
+          <label>First Name</label>
+          <input placeholder="First Name" name="user[firstName]" type="text" required>
+        </div>
+        <div class="field">
+          <label>Last Name</label>
+          <input placeholder="Last Name" name="user[lastName]" type="text">
+        </div>
+      </div>
+      <div class="required field">
+        <label>E-mail</label>
+        <input placeholder="E-mail" name="user[email]" type="email" required>
+      </div>
+      <div class="two fields">
+        <div class="required field">
+          <label>Username</label>
+          <input placeholder="Username" name="user[username]" type="text" minlength="3" maxlength="15" required>
+        </div>
+        <div class="required field">
+          <label>Password</label>
+          <input placeholder="Password" name="user[password]" type="password" required>
+        </div>
+      </div>
+      <div class="ui hidden divider"></div>
+      <button class="ui black button">Submit</button>
+      <div class="ui hidden divider"></div>
+    </form>
+  </div>
+
+<% include ../partials/footer %>
