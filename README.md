@@ -1,11 +1,11 @@
 # Gastronome
 
-    Food! Who doesn’t love food? I love food! Love the idea of sharing my experiences with food using literature. 
+Food! Who doesn’t love food? I love food! Love the idea of sharing my experiences with food using literature. 
 Gastronome is a food blog that documents the fact that food is for the soul. This application will allow users to blog about food. 
 A blog that will chronicle authentic recipes, or experiential food or just about anything that one is cooking or enjoying. 
 With a story and images accompanying the blog post, this application will celebrate the awesomeness of food.
 
-    A user must be logged into create/edit/delete a blog and to add comments to other blogs. 
+A user must be logged into create/edit/delete a blog and to add comments to other blogs. 
 This blog uses all 7 routes of the RESTful API architecture. 
 A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data. 
 
