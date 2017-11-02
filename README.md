@@ -9,7 +9,7 @@ A user must be logged into create/edit/delete a blog and to add comments to othe
 This blog uses all 7 routes of the RESTful API architecture. 
 A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data. 
 
-##Instructions on how to run the application
+## Instructions on how to run the application
 * Download the repository.
 * Prerequisites:
     The following should be installed on the machine.
@@ -21,8 +21,7 @@ A RESTful API is an application program interface (API) that uses HTTP requests 
 * Enjoy!
 
 ## Application Routes
-    The application has three main entities - User, Blogs and Comments. The follwoing are the routes that assist in 
-performing CRUD operations on these entities. 
+The application has three main entities - User, Blogs and Comments. The follwoing are the routes that assist in performing CRUD operations on these entities. 
 
 ### User Routes
 
