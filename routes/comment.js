@@ -4,35 +4,22 @@ var express     = require("express"),
     Comment     = require("../models/comment"),
     Blog        = require("../models/blog");
 
-//Comments New
-router.get("/new", middleware.isLoggedIn, function(req, res){
-    console.log("New comment");
-    
-    Blog.findById(req.params.id, function(err, blog){
-        if(err){
-            console.log(err);
-        } else {
-            console.log("Blog Found : "+blog);
-            res.render("comment/new", {blog: blog});
-        }
-    })
-});
-
-//Comments Create
+//Add Comment
 router.post("/", middleware.isLoggedIn, function(req, res){
    console.log("Create comment");
    
    Blog.findById(req.params.id, function(err, blogFound){
        if(err){
            console.log(err);
+           req.flash("error", "Blog not found.");
            res.redirect("/blogs/"+req.params.id);
        } else {
         Comment.create(req.body.comment, function(err, commentCreated){
            if(err){
                console.log(err);
+               req.flash("error", "Oops! Something went wrong. Please try again.");
+               res.redirect("/blogs/"+req.params.id);
            } else {
-               
-               console.log(req.user);
                
                commentCreated.author.id = req.user._id;
                commentCreated.author.username = req.user.username;
@@ -42,7 +29,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                blogFound.comments.push(commentCreated);
                blogFound.save();
                
-               console.log(blogFound);
                res.redirect('/blogs/' + blogFound._id);
            }
         });

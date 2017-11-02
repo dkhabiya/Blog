@@ -30,12 +30,10 @@ UserSchema.pre('save', function(next) {
   });
 });
 
-// Get user fullname
 UserSchema.methods.getFullName = function() {
   return this.name.firstName + ' ' + this.name.lastName;
 }
 
-//compare password in the database and the one that the user types in
 UserSchema.methods.comparePassword = function(password) {
   return bcrypt.compareSync(password, this.password);
 }

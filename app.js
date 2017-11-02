@@ -26,7 +26,7 @@ app.use(methodOverride("_method"));
 
 // Passport config
 app.use(require("express-session")({
-    secret:"Chand pe le gaye!",
+    secret:"Idli Saambaar!",
     resave: false,
     saveUninitialized: false
 }));
@@ -52,7 +52,6 @@ app.use("/user", userRoutes);
 
 // Default route.
 app.get("/", function(req, res) {
-    // res.redirect("/blogs");
     res.render("default");
 });
 

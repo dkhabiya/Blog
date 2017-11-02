@@ -1,7 +1,7 @@
 var middleware  = {},
-    User        = require("../models/user"),
     Blog        = require("../models/blog");
-    
+   
+// Check if the blog belong to the logged in user.
 middleware.checkBlogOwnership = function(req, res, next) {
  if(req.isAuthenticated()){
         Blog.findById(req.params.id, function(err, foundBlog){
@@ -23,6 +23,7 @@ middleware.checkBlogOwnership = function(req, res, next) {
     }
 }
 
+// Check if a user is logged in.
 middleware.isLoggedIn = function(req, res, next) {
     if(req.isAuthenticated()) {
         return next();

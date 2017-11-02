@@ -2,7 +2,6 @@ var passport = require("passport"),
     LocalStrategy = require("passport-local").Strategy,
     User = require('../models/user');
 
-// serialize and deserialize
 passport.serializeUser(function(user, done) {
     done(null, user._id);
 });
@@ -13,7 +12,6 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
-//Middleware
 passport.use('local-login', new LocalStrategy({
     usernameField: 'username',
     passwordField: 'password',

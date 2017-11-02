@@ -7,9 +7,15 @@
                 <img src="<%= blog.image %>" class="ui centered rounded large bordered image">
                 <br/>
                 <div class="content">
-                    <span><%= blog.created.toDateString() %></span>
+                    <h3 class="ui header">
+                        <i class="user icon"></i>
+                        <div class="content">
+                            <%= blog.author.username %>
+                            <div class="sub header"><%= blog.created.toDateString() %></div>
+                        </div>
+                    </h3>
                 </div>
-                <br/>
+                
                 <div class="description">
                     <p><%- blog.body %></p>
                 </div>
@@ -25,11 +31,12 @@
                 <div class="ui divider"></div>
                 
                 <div class="ui medium header">Comments</div>
-                <div class="ui comments">
+                <div class="ui large comments">
                     <% blog.comments.forEach(function(comment){ %>
                         <div class="comment">
                             <div class="content">
-                                <strong><a class="ui small header author"><%= comment.author.username %></a></strong>
+                                <i class="comment small icon"></i>
+                                <a class="ui header author"><%= comment.author.username %></a>
                                 <div class="metadata">
                                     <span class="date"><%= comment.created.toDateString() %></span>
                                 </div>

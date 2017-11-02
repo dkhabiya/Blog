@@ -23,7 +23,7 @@
 				
 				<div class="right menu">
 					<% if(currentUser) { %>
-						<a href="/user/<%= currentUser._id %>/edit" class="item"><i class="settings icon"></i>&nbsp Hello <%= currentUser.firstName %></a>
+						<a href="/user/<%= currentUser._id %>/show" class="item"><i class="settings icon"></i>&nbsp Hello <%= currentUser.firstName %></a>
 						<a href="/user/logout" class="item">Logout</a>
 					<% } else { %>
 						<a href="/user/login" class="item">Login</a>
@@ -32,4 +32,25 @@
 				</div>
 			</div>
 		</div>
+		<div class="ui main container">
+    	<% if(error && error.length > 0){ %>
+            <div id="message" class="ui floating red medium message">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div id="message" class="ui floating green medium message">
+                <%= success %>
+            </div>
+        <% } %>
+        <% if(info && info.length > 0){ %>
+            <div id="message" class="ui floating blue medium message">
+                <%= info %>
+            </div>
+        <% } %>
+        <script>
+			setTimeout(function() {
+				$('#message').fadeOut('slow');
+			}, 3000);
+        </script>
 		
