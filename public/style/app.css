@@ -14,3 +14,7 @@ i.icon {
   position: relative;
   padding: 0 !important;
 }
+
+.ui.labeled.icon.button>.icon, .ui.labeled.icon.buttons>.button>.icon {
+    background: transparent; 
+}

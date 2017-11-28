@@ -1,7 +1,7 @@
 <% include ../partials/header %>
     <div class="ui main text container">
-        <div class="ui huge header">Blogs</div>
         <% if(blogs.length) { %>
+            <div class="ui huge header">Blogs</div>
             <div class="ui top attached segment">
                 <div class="ui divided items">
                     <% blogs.forEach(function(blog){ %>
@@ -28,7 +28,10 @@
                 </div>
             </div>
         <% } else { %>
-            <div class="ui large header">No posts!</div>
+            <div class="ui hidden divider"></div>
+            <div class="ui huge center aligned header">
+                Get Started! Click on Create Post to create a new blog post.
+            </div>
         <% } %>
     </div>
 
