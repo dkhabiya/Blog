@@ -21,15 +21,16 @@
                 <div class="description">
                     <p><%- post.body %></p>
                 </div>
-                <br/>
+                
                 <% if(currentUser && post.author.id.equals(currentUser._id)) { %>
+                <div class="ui hidden divider"></div>
                     <a class="ui blue basic button" href="/posts/<%= post._id %>/edit">Edit</a>
                     <form id="delete" action="/posts/<%= post._id %>?_method=DELETE" method="post">
                         <button class="ui red basic button">Delete</button>
                     </form>
                 <% } %>
                 
-                <div class="ui hidden divider"></div>
+                
                 <div class="ui divider"></div>
                 
                 <div class="ui medium header">Comments</div>
@@ -60,5 +61,5 @@
             </div>
         </div>
     </div>
-    
+    <div class="ui hidden divider"></div>
 <% include ../partials/footer %>
