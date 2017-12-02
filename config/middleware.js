@@ -1,3 +1,4 @@
+// User authentication functions
 var middleware  = {},
     post        = require("../models/post");
    

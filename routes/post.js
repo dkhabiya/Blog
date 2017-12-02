@@ -1,3 +1,4 @@
+// Application routes for posts.
 var express     = require("express"),
     router      = express.Router(),
     middleware  = require("../config/middleware"),

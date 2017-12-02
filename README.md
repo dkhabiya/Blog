@@ -21,7 +21,7 @@ A RESTful API is an application program interface (API) that uses HTTP requests 
 * Enjoy!
 
 ## Application Routes
-The application has three main entities - User, posts and Comments. The follwoing are the routes that assist in performing CRUD operations on these entities. 
+The application has three main entities - User, Posts and Comments. The follwoing are the routes that assist in performing CRUD operations on these entities. 
 
 ### User Routes
 
@@ -31,9 +31,9 @@ The application has three main entities - User, posts and Comments. The follwoin
 | SINGUP    | /user/signUp      | POST          | Create user account                   |
 | LOGIN     | /user/login       | GET           | Show form to login                    |
 | LOGIN     | /user/login       | POST          | Do login                              |
-| SHOW      | /user/:id         | PUT           | View a user details                   |
+| SHOW      | /user/:id         | GET           | View a user details                   |
 
-### post Routes
+### Post Routes
 
 | Name      |  Path                     | HTTP Method   | Description                           |
 |:----------|:--------------------------|:--------------|:--------------------------------------|

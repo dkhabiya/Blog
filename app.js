@@ -1,3 +1,4 @@
+// Main application route handler.
 var express         = require("express"),
     app             = express(),
     bodyParser      = require("body-parser"),
@@ -14,6 +15,7 @@ var postRoutes      = require("./routes/post"),
     commentRoutes   = require("./routes/comment"),
     userRoutes      = require("./routes/user");
 
+// MongoDB promises
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/gastronome");
 

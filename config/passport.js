@@ -1,3 +1,4 @@
+// User login validations
 var passport = require("passport"),
     LocalStrategy = require("passport-local").Strategy,
     User = require('../models/user');

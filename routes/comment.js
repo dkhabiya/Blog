@@ -1,3 +1,4 @@
+// Application routes for comments.
 var express     = require("express"),
     router      = express.Router({mergeParams: true}),
     middleware  = require("../config/middleware"),

@@ -1,10 +1,10 @@
+// Application routes for users.
 var express     = require("express"),
     router      = express.Router(),
     middleware  = require("../config/middleware"),
     passport    = require("passport");
     
 var User = require("../models/user");
-
 
 // Show SignUp form
 router.get("/signUp", function(req, res) {
@@ -63,7 +63,7 @@ router.post("/login", passport.authenticate("local-login", {
 router.get("/logout", function(req, res) {
     console.log("Logout.");
     req.logout();
-    req.flash("success", "Until next time... Feed your soul!");
+    req.flash("info", "Until next time... Feed your soul!");
     req.user = null;
     res.redirect("/user/login");
 });
