@@ -37,7 +37,7 @@ router.post('/signUp', function(req, res) {
                 res.redirect("/login");
             } else {
                 req.flash("info", "Welcome "+user.firstName+"!");
-                res.redirect("/blogs");
+                res.redirect("/posts");
             }
         });
     });
@@ -56,7 +56,7 @@ router.post("/login", passport.authenticate("local-login", {
 }), function(req, res) {
     console.log("Login success.");
     req.flash("info", "Welcome "+req.user.firstName+"!");
-    res.redirect("/blogs");
+    res.redirect("/posts");
 });
 
 // Logout

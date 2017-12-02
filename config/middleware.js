@@ -1,15 +1,15 @@
 var middleware  = {},
-    Blog        = require("../models/blog");
+    post        = require("../models/post");
    
-// Check if the blog belong to the logged in user.
-middleware.checkBlogOwnership = function(req, res, next) {
+// Check if the post belong to the logged in user.
+middleware.checkPostOwnership = function(req, res, next) {
  if(req.isAuthenticated()){
-        Blog.findById(req.params.id, function(err, foundBlog){
+        post.findById(req.params.id, function(err, foundPost){
             if(err){
-                req.flash("error", "Blog not found");
+                req.flash("error", "Post not found");
                 res.redirect("back");
            }  else {
-                if(foundBlog.author.id.equals(req.user._id)) {
+                if(foundPost.author.id.equals(req.user._id)) {
                     next();
                 } else {
                     req.flash("error", "You don't have permission to do that");
@@ -18,7 +18,7 @@ middleware.checkBlogOwnership = function(req, res, next) {
             }
         });
     } else {
-        req.flash("error", "You need to be logged in to do that");
+        req.flash("error", "You need to be logged in to do that.");
         res.redirect("back");
     }
 }

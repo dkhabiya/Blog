@@ -1,12 +1,12 @@
 # Gastronome
 
 Food! Who doesn’t love food? I love food! Love the idea of sharing my experiences with food using literature. 
-Gastronome is a food blog that documents the fact that food is for the soul. This application will allow users to blog about food. 
-A blog that will chronicle authentic recipes, or experiential food or just about anything that one is cooking or enjoying. 
-With a story and images accompanying the blog post, this application will celebrate the awesomeness of food.
+Gastronome is a food post that documents the fact that food is for the soul. This application will allow users to post about food. 
+A post that will chronicle authentic recipes, or experiential food or just about anything that one is cooking or enjoying. 
+With a story and images accompanying the post post, this application will celebrate the awesomeness of food.
 
-A user must be logged into create/edit/delete a blog and to add comments to other blogs. 
-This blog uses all 7 routes of the RESTful API architecture. 
+A user must be logged into create/edit/delete a post and to add comments to other posts. 
+This post uses all 7 routes of the RESTful API architecture. 
 A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data. 
 
 ## Instructions on how to run the application
@@ -21,7 +21,7 @@ A RESTful API is an application program interface (API) that uses HTTP requests 
 * Enjoy!
 
 ## Application Routes
-The application has three main entities - User, Blogs and Comments. The follwoing are the routes that assist in performing CRUD operations on these entities. 
+The application has three main entities - User, posts and Comments. The follwoing are the routes that assist in performing CRUD operations on these entities. 
 
 ### User Routes
 
@@ -33,21 +33,21 @@ The application has three main entities - User, Blogs and Comments. The follwoin
 | LOGIN     | /user/login       | POST          | Do login                              |
 | SHOW      | /user/:id         | PUT           | View a user details                   |
 
-### Blog Routes
+### post Routes
 
 | Name      |  Path                     | HTTP Method   | Description                           |
 |:----------|:--------------------------|:--------------|:--------------------------------------|
-| INDEX     | /blogAll                  | GET           | Show all blogs                        |
-| INDEX     | /user/:id/blog            | GET           | Show user specific blogs              |
-| NEW       | /user/:id/blog/new        | GET           | Show form to create a new blog entry  |
-| CREATE    | /user/:id/blog            | POST          | Create a new blog entry               |
-| SHOW      | /user/:id/blog/:id        | GET           | Show details of a blog entry          |
-| EDIT      | /user/:id/blog/:id/edit   | GET           | Get the edit form for a blog entry    |
-| UPDATE    | /user/:id/blog/:id        | PUT           | Update a blog entry                   |
-| DESTROY   | /user/:id/blog/:id        | DELETE        | Delete a blog entry                   |
+| INDEX     | /postAll                  | GET           | Show all posts                        |
+| INDEX     | /user/:id/post            | GET           | Show user specific posts              |
+| NEW       | /user/:id/post/new        | GET           | Show form to create a new post entry  |
+| CREATE    | /user/:id/post            | POST          | Create a new post entry               |
+| SHOW      | /user/:id/post/:id        | GET           | Show details of a post entry          |
+| EDIT      | /user/:id/post/:id/edit   | GET           | Get the edit form for a post entry    |
+| UPDATE    | /user/:id/post/:id        | PUT           | Update a post entry                   |
+| DESTROY   | /user/:id/post/:id        | DELETE        | Delete a post entry                   |
 
 ### Comment Routes
 
 | Name      |  Path                     | HTTP Method   | Description       |
 |:----------|:--------------------------|:--------------|:------------------|
-| CREATE    | /user/:id/blog.:id        | POST          | Create comment    |
+| CREATE    | /user/:id/post.:id        | POST          | Create comment    |

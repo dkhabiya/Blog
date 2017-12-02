@@ -10,7 +10,7 @@ var express         = require("express"),
     sanitizer       = require("express-sanitizer");
     
 // Including routes
-var blogRoutes      = require("./routes/blog"),
+var postRoutes      = require("./routes/post"),
     commentRoutes   = require("./routes/comment"),
     userRoutes      = require("./routes/user");
 
@@ -46,8 +46,8 @@ app.use(flash());
 app.use(sanitizer());
 
 // Use route files
-app.use("/blogs", blogRoutes);
-app.use("/blogs/:id/comments", commentRoutes);
+app.use("/posts", postRoutes);
+app.use("/posts/:id/comments", commentRoutes);
 app.use("/user", userRoutes);
 
 // Default route.

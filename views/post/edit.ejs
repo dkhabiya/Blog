@@ -1,18 +1,18 @@
 <% include ../partials/header %>
     <div class="ui main text container segment">
-        <div class="ui huge header">Edit <%= blog.title %></div>
-        <form class="ui form" method="post" action="/blogs/<%= blog._id %>?_method=PUT">
+        <div class="ui huge header">Edit <%= post.title %></div>
+        <form class="ui form" method="post" action="/posts/<%= post._id %>?_method=PUT">
             <div class="field">
                 <label>Title</label>
-                <input type="text" name="blog[title]" placeholder="Title" value="<%= blog.title %>">
+                <input type="text" name="post[title]" placeholder="Title" value="<%= post.title %>">
             </div>
             <div class="field">
                 <label>Image</label>
-                <input type="text" name="blog[image]" placeholder="Image URL" value="<%= blog.image %>">
+                <input type="text" name="post[image]" placeholder="Image URL" value="<%= post.image %>">
             </div>
             <div class="field">
                 <label>Post</label>
-                <textarea name="blog[body]" placeholder="Post"><%= blog.body %></textarea>
+                <textarea name="post[body]" placeholder="Post"><%= post.body %></textarea>
             </div>
             <input type="submit" class="ui secondary button" name="Post">
         </form>

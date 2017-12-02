@@ -2,23 +2,23 @@ var express     = require("express"),
     router      = express.Router({mergeParams: true}),
     middleware  = require("../config/middleware"),
     Comment     = require("../models/comment"),
-    Blog        = require("../models/blog");
+    Post        = require("../models/post");
 
 //Add Comment
 router.post("/", middleware.isLoggedIn, function(req, res){
    console.log("Create comment");
    
-   Blog.findById(req.params.id, function(err, blogFound){
+   Post.findById(req.params.id, function(err, postFound){
        if(err){
            console.log(err);
-           req.flash("error", "Blog not found.");
-           res.redirect("/blogs/"+req.params.id);
+           req.flash("error", "Post not found.");
+           res.redirect("/posts/"+req.params.id);
        } else {
         Comment.create(req.body.comment, function(err, commentCreated){
            if(err){
                console.log(err);
                req.flash("error", "Oops! Something went wrong. Please try again.");
-               res.redirect("/blogs/"+req.params.id);
+               res.redirect("/posts/"+req.params.id);
            } else {
                
                commentCreated.author.id = req.user._id;
@@ -26,10 +26,10 @@ router.post("/", middleware.isLoggedIn, function(req, res){
                commentCreated.text = req.body.comment.text;
                
                commentCreated.save();
-               blogFound.comments.push(commentCreated);
-               blogFound.save();
+               postFound.comments.push(commentCreated);
+               postFound.save();
                
-               res.redirect('/blogs/' + blogFound._id);
+               res.redirect('/posts/' + postFound._id);
            }
         });
        }

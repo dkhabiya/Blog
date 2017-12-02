@@ -1,7 +1,7 @@
 {
-  "name": "blog",
+  "name": "Gastronome",
   "version": "1.0.0",
-  "description": "Food Blog with Semantic UI",
+  "description": "Food post with Semantic UI",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

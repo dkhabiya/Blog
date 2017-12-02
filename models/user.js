@@ -9,9 +9,9 @@ var UserSchema = new mongoose.Schema({
     username: String,
     password: String,
     created: {type: Date, default: Date.now()},
-    blogs : [{
+    posts : [{
          type: mongoose.Schema.Types.ObjectId,
-         ref: "Blog"
+         ref: "Post"
       }
     ]
 });
