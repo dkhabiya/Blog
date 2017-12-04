@@ -15,7 +15,7 @@ router.get("/", middleware.isLoggedIn, function(req, res){
             req.flash("error", "User not found. Please Try Again.");
             res.redirect("/user/login");
         } else {
-            res.render("post/index", {posts: user.posts});
+            res.render("post/index", {posts: user.posts, type: false});
         }
     });
 });
@@ -30,7 +30,7 @@ router.get("/all", function(req, res){
             req.flash("error", "Oops! Something went wrong. Please try again.");
             res.redirect("/");
         } else {
-            res.render("post/index", {posts: foundPosts});
+            res.render("post/index", {posts: foundPosts, type: true});
         }
     });
 });
